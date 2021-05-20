@@ -1,0 +1,78 @@
+<h1 class="text-center mt-5">Skicka ett meddelande till mig</h1>
+<div class="container mt-5 d-flex justify-content-center mb-5">
+    <div class="message-border p-5 justify-content-center">
+        <form  #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <label for="namn"></label>
+            <input 
+            id="namn" 
+            name="namn" 
+            class="form-control white-input p-2" 
+            type="text" 
+            placeholder="namn"
+            #namn="ngModel" 
+            [(ngModel)]="mailMessage.namn"
+            required
+            minlength="2"> 
+            <!-- required gör att valid blir false om fältet inte är ifyllt -->
+            <div *ngIf="!namn.valid && namn.touched">
+            <small class="error-message" *ngIf="namn.errors?.required">Du måste ange ett namn</small>
+            <small class="error-message" *ngIf="namn.errors?.minlength">Ditt namn måste innehålla minst 2 bokstäver</small>
+            </div>
+
+            <label for="email"></label>
+            <input 
+            id="email" 
+            name="email" 
+            class="form-control white-input p-2 mt-2 " 
+            type="text" 
+            placeholder="email" 
+            #email="ngModel" 
+            [(ngModel)]="mailMessage.email"
+            required
+            pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+
+            <div *ngIf="!email.valid && email.touched">
+            <small *ngIf="email.errors?.required" class="error-message">Du måste ange en email</small>
+            <small *ngIf="email.errors?.pattern" class="error-message">din email måste innehålla @ och får inte innehålla tecken såsom åäö</small>
+            </div>
+
+            <label for="subject"></label>
+            <input 
+            id="subject" 
+            name="subject" 
+            class="form-control white-input p-2 mt-2" 
+            type="text" 
+            placeholder="Ämne" 
+            #subject="ngModel"
+            [(ngModel)]="mailMessage.subject"
+            required
+            >
+
+            <div *ngIf="!subject.valid && subject.touched">
+            <small  class="error-message">Du måste ange ett ämne</small>
+            </div>
+
+
+            <textarea 
+            name="message" 
+            class="form-control white-input p-2 message mt-5" 
+            rows="4" cols="50"
+            placeholder="skriv meddelande..."
+            #message="ngModel" 
+            [(ngModel)]="mailMessage.message"
+            required>
+            </textarea>
+
+            <div *ngIf="!message.valid && message.touched">
+                <small  class="error-message">Du måste ange ett meddelande</small>
+            </div>
+            <p id="sent-message" class="d-none animation fade-in text-center mt-4">Meddelandet har skickats <i class="check fas fa-check-circle"></i></p>
+            <div class="d-flex mt-5 justify-content-center"><button class="col-4 p-1 skicka btn" [disabled]="!f.valid">Skicka</button></div>
+
+        </form>
+
+
+
+    </div>
+
+</div>

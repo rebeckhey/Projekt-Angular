@@ -1,1 +1,56 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+body{
+   background-color: #E7C3D8;
+   font-family: 'Open Sans Condensed', sans-serif;
+    color: white;
+}
+.image{
+    height:400px ;
+    border-radius: 50%;
+}
+
+.text-box{
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: white;
+    font-size: 1.2rem;
+    width: 400px;
+}
+.message{
+    resize: none;
+}
+.white-input{
+border-radius: 20px;
+border:3px solid white;
+background-color: #E7C3D8;
+outline: none;
+}
+input::placeholder, textarea::placeholder{
+    color: white;
+  }
+.message-border{
+    border:3px solid white;
+    border-radius: 20px;
+}
+.skicka{
+    border:3px solid white;
+    border-radius: 20px;
+    background-color: #E7C3D8;
+    color: white;
+}
+.skicka:hover{
+background-color: white;
+color:#E7C3D8;
+}
+input, select, textarea{
+    color: white;
+}
+.error-message{
+    color:#EB6161;
+}
+.check{
+    color:rgb(87, 168, 93);
+}
